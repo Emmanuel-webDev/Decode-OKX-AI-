@@ -7,7 +7,7 @@ import type { Assessment } from "../analyzer/pipeline.js";
 let bot: Telegraf | null = null;
 
 const HELP = [
-  "🛡️ *Decode Guardian*",
+  "🛡️ *X-Layer Fraud Gaurd*",
   "Real-time X Layer security alerts.",
   "",
   "*Commands:*",
