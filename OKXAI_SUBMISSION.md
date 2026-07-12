@@ -1,3 +1,9 @@
+Live surfaces:
+- API: https://<railway-domain>/api/v1/inspect-protocol
+- Swagger: https://<railway-domain>/docs
+- Telegram bot: @XLayerFraudGuard_bot
+- MCP server: see repo README
+
 # OKX.AI ASP Listing — Decode Guardian
 
 Paste-ready copy for the OKX.AI marketplace submission (Monday). All fields written to fit the marketplace tone (see CertiK, Onchain Data Explorer, AlphaCopy listings for pattern).

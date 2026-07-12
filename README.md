@@ -48,7 +48,7 @@ Traditional dashboards wait for users to check them. By the time you notice a pr
 | Layer | Choice | Why |
 |-------|--------|-----|
 | Chain client | viem | Typed, modern, works with X Layer's OP-Stack RPC |
-| LLM | Gemini 1.5 Flash | Free tier, fast, JSON-mode support |
+| LLM | Gemini 3.5 Flash | Free tier, fast, JSON-mode support |
 | Cache & subs | Supabase | Free tier, hosted Postgres, real |
 | Alerts | Telegraf | Battle-tested Telegram bot lib |
 | API | Express + swagger-ui-express | Judges click `/docs`, hit "Try it out" |
