@@ -1,6 +1,6 @@
 Live surfaces:
-- API: https://<railway-domain>/api/v1/inspect-protocol
-- Swagger: https://<railway-domain>/docs
+- API: https://decode-okx-ai-production.up.railway.app/api/v1/inspect-protocol
+- Swagger: https://decode-okx-ai-production.up.railway.app/docs
 - Telegram bot: @XLayerFraudGuard_bot
 - MCP server: see repo README
 
