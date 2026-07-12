@@ -16,10 +16,10 @@ const openapi = {
     title: "Decode Guardian ASP",
     version: "0.1.0",
     description:
-      "Autonomous X Layer security guardian. Reads recent protocol modifications (proxy upgrades, admin changes) and returns a structured risk verdict. Callable by humans, by other agents on OKX.AI, or over MCP.",
+      "Autonomous X Layer security guardian. Reads recent protocol modifications (proxy upgrades, admin changes) and returns a structured risk verdict. Callable by humans, by other agents on OKX.AI, or over MCP, Try the Telegram companion bot: [@XLayerFraudGuard_bot](https://t.me/XLayerFraudGuard_bot)",
     contact: {
       name: "Decode",
-      url: "https://github.com/your-handle/decode-guardian",
+      url: "https://github.com/Emmanuel-webDev/Decode-OKX-AI-",
     },
   },
   servers: [{ url: "/" }],
@@ -62,7 +62,12 @@ const openapi = {
 };
 
 app.get("/health", (_, res) =>
-  res.json({ ok: true, chain: "xlayer", chainId: config.XLAYER_CHAIN_ID }),
+  res.json({
+    ok: true,
+    chain: "xlayer",
+    chainId: config.XLAYER_CHAIN_ID,
+    telegram_bot: "https://t.me/XLayerFraudGuard_bot",
+  }),
 );
 
 const inspectSchema = z.object({
@@ -95,6 +100,8 @@ app.get("/", (_, res) =>
     version: "0.1.0",
     docs: "/docs",
     live_service_url: "/api/v1/inspect-protocol",
+    telegram_bot: "https://t.me/XLayerFraudGuard_bot",
+    github: "https://github.com/Emmanuel-webDev/Decode-OKX-AI-",
   }),
 );
 
