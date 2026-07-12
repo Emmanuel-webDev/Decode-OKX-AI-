@@ -2,7 +2,10 @@
 nixPkgs = ["nodejs_22"]
 
 [phases.install]
-cmds = ["npm ci --no-audit --no-fund --prefer-offline=false"]
+cmds = [
+  "npm config set cache /tmp/.npm-cache",
+  "npm ci --no-audit --no-fund --ignore-scripts"
+]
 
 [start]
 cmd = "npx tsx src/index.ts"

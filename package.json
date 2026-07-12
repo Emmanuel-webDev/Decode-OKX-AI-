@@ -5,7 +5,6 @@
   "type": "module",
   "main": "dist/index.js",
   "scripts": {
-    "build": "tsc",
     "dev": "tsx watch src/index.ts",
     "start": "node dist/index.js",
     "start:api": "tsx src/api/server.ts",
@@ -14,7 +13,8 @@
    "simulate": "tsx scripts/simulate-attack.ts",
    "seed": "tsx scripts/seed-demo.ts",
   "doctor": "tsx scripts/doctor.ts",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "postinstall": "echo 'skip'"
   },
   "dependencies": {
     "@google/genai": "^2.11.0",
