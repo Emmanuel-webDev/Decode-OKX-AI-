@@ -17,7 +17,10 @@ const openapi = {
     version: "0.1.0",
     description:
       "Autonomous X Layer security guardian. Reads recent protocol modifications (proxy upgrades, admin changes) and returns a structured risk verdict. Callable by humans, by other agents on OKX.AI, or over MCP.",
-    contact: { name: "Decode", url: "https://github.com/your-handle/decode-guardian" },
+    contact: {
+      name: "Decode",
+      url: "https://github.com/your-handle/decode-guardian",
+    },
   },
   servers: [{ url: "/" }],
   paths: {
@@ -40,7 +43,9 @@ const openapi = {
                 properties: {
                   address: {
                     type: "string",
-                    example: "0x0000000000000000000000000000000000000000",
+                    example: "0xdec0de0000000000000000000000000000000001",
+                    description:
+                      "EVM address on X Layer. Try 0xdec0de0000000000000000000000000000000001 for a demo CRITICAL verdict, or 0xdec0de0000000000000000000000000000000002 for a demo HIGH verdict.",
                   },
                 },
               },
@@ -56,7 +61,9 @@ const openapi = {
   },
 };
 
-app.get("/health", (_, res) => res.json({ ok: true, chain: "xlayer", chainId: config.XLAYER_CHAIN_ID }));
+app.get("/health", (_, res) =>
+  res.json({ ok: true, chain: "xlayer", chainId: config.XLAYER_CHAIN_ID }),
+);
 
 const inspectSchema = z.object({
   address: z.string().refine(isAddress, "not a valid EVM address"),
@@ -79,7 +86,7 @@ app.post("/api/v1/inspect-protocol", async (req, res) => {
 app.use(
   "/docs",
   swaggerUi.serve,
-  swaggerUi.setup(openapi, { customSiteTitle: "Decode Guardian API" })
+  swaggerUi.setup(openapi, { customSiteTitle: "Decode Guardian API" }),
 );
 
 app.get("/", (_, res) =>
@@ -88,7 +95,7 @@ app.get("/", (_, res) =>
     version: "0.1.0",
     docs: "/docs",
     live_service_url: "/api/v1/inspect-protocol",
-  })
+  }),
 );
 
 if (import.meta.url === `file://${process.argv[1]}`) {

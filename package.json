@@ -11,8 +11,9 @@
     "start:api": "tsx src/api/server.ts",
     "start:monitor": "tsx src/index.ts",
     "start:mcp": "tsx src/mcp/server.ts",
-    "simulate": "tsx scripts/simulate-attack.ts",
-    "doctor": "tsx scripts/doctor.ts",
+   "simulate": "tsx scripts/simulate-attack.ts",
+   "seed": "tsx scripts/seed-demo.ts",
+  "doctor": "tsx scripts/doctor.ts",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
