@@ -5,6 +5,8 @@ import { getAddress, isAddress } from "viem";
 import { config } from "../config.js";
 import { logger } from "../logger.js";
 import { inspectProtocol, analyzeEvent } from "../analyzer/pipeline.js";
+import { broadcastAlert } from "../telegram/bot.js";
+import type { Assessment } from "../analyzer/pipeline.js";
 
 const app = express();
 app.use(express.json({ limit: "128kb" }));
@@ -58,6 +60,17 @@ const openapi = {
         },
       },
     },
+    "/api/v1/demo-trigger": {
+      post: {
+        summary: "🎬 Fire a demo CRITICAL alert to all Telegram subscribers",
+        description:
+          "For judges + curious devs: fabricates a synthetic admin-to-EOA takeover event and broadcasts a formatted alert to every Telegram user who /watch'd the demo address. Rate-limited to 1 call per 60s per IP. See the alert land in your Telegram in ~1 second.",
+        responses: {
+          "200": { description: "Alert broadcast successfully" },
+          "429": { description: "Rate limited — wait then retry" },
+        },
+      },
+    },
   },
 };
 
@@ -86,6 +99,57 @@ app.post("/api/v1/inspect-protocol", async (req, res) => {
     logger.error({ err }, "inspect-protocol failed");
     res.status(500).json({ error: "internal_error" });
   }
+});
+
+// Simple in-memory rate limit: 1 call per IP per 60s
+const demoTriggerLastCall = new Map<string, number>();
+const DEMO_COOLDOWN_MS = 60_000;
+
+app.post("/api/v1/demo-trigger", async (req, res) => {
+  const ip = req.ip || req.socket.remoteAddress || "unknown";
+  const now = Date.now();
+  const last = demoTriggerLastCall.get(ip) ?? 0;
+  if (now - last < DEMO_COOLDOWN_MS) {
+    const wait = Math.ceil((DEMO_COOLDOWN_MS - (now - last)) / 1000);
+    return res.status(429).json({
+      error: "rate_limited",
+      retry_after_seconds: wait,
+      note: `Demo trigger can only be called once every ${DEMO_COOLDOWN_MS / 1000}s per IP.`,
+    });
+  }
+  demoTriggerLastCall.set(ip, now);
+
+  // Fabricate a CRITICAL admin-to-EOA event on the demo address
+  const demoAssessment: Assessment = {
+    proxy: "0xdec0de0000000000000000000000000000000001",
+    risk_score: 92,
+    verdict: "CRITICAL",
+    summary:
+      "🎬 LIVE DEMO — Simulated admin-to-EOA takeover fired manually for testing. In production this would be a real X Layer proxy that just had its admin transferred to an externally owned account. Unilateral upgrade power now sits behind a single private key.",
+    user_action:
+      "Demo trigger — no real action needed. In a real incident, subscribed users would withdraw funds immediately.",
+    signals: [
+      {
+        code: "ADMIN_TO_EOA",
+        severity: "critical",
+        message:
+          "Proxy admin transferred to an EOA. No multisig or timelock protection.",
+      },
+    ],
+    source: "gemini",
+    facts_snapshot: { demo: true, triggered_at: new Date().toISOString() },
+    created_at: new Date().toISOString(),
+  };
+
+  await broadcastAlert(demoAssessment);
+
+  res.json({
+    ok: true,
+    message:
+      "Demo alert broadcast to all subscribers of 0xdec0de0000000000000000000000000000000001. Check your Telegram if you've /watch'd this address.",
+    tip: "Not receiving alerts? Message @XLayerFraudGuard_bot on Telegram, send /start, then /watch 0xdec0de0000000000000000000000000000000001",
+    verdict: demoAssessment,
+  });
 });
 
 app.use(
