@@ -1,5 +1,13 @@
 # 🛡️ Decode Guardian — X Layer Security ASP
 
+Live on OKX AI Marketplace — Agent #5255
+- Try it: [okx.ai/agents/5255](https://www.okx.ai/agents/5255)
+- API: https://decode-okx-ai-production.up.railway.app/api/v1/inspect-protocol
+- Docs: https://decode-okx-ai-production.up.railway.app/docs
+- Telegram: [@XLayerFraudGuard_bot](https://t.me/XLayerFraudGuard_bot)
+
+Built for the OKX AI Genesis Hackathon.
+
 Autonomous security infrastructure for X Layer. Watches proxy upgrades and admin transfers on target protocols in real time, produces structured risk verdicts, and pushes alerts to Telegram — callable by humans, by other agents on OKX.AI, and over MCP.
 
 Built for the **OKX.AI Genesis Hackathon** (Finance Copilot track).
