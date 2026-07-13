@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "skills": {
+    "okx-agent-payments-protocol": {
+      "source": "okx/onchainos-skills",
+      "sourceType": "github",
+      "skillPath": "skills/okx-agent-payments-protocol/SKILL.md",
+      "computedHash": "5c3bcb02c0698e9b7f162247d300d0c2153a8cdd88e48c454af19d9205a32412"
+    },
+    "okx-agentic-wallet": {
+      "source": "okx/onchainos-skills",
+      "sourceType": "github",
+      "skillPath": "skills/okx-agentic-wallet/SKILL.md",
+      "computedHash": "24e1f2d8d8178573649291007302bdef8b4942ec2e52dad6c517362b1b48be80"
+    },
+    "okx-ai": {
+      "source": "okx/onchainos-skills",
+      "sourceType": "github",
+      "skillPath": "skills/okx-ai/SKILL.md",
+      "computedHash": "c81587ba2e369f73a4470c54322753a746b0c45525e5d3ff9d54c5395a0333b8"
+    },
+    "okx-dapp-discovery": {
+      "source": "okx/onchainos-skills",
+      "sourceType": "github",
+      "skillPath": "skills/okx-dapp-discovery/SKILL.md",
+      "computedHash": "8d981b527ea4e6827253d0fbf1107b440cbb583e5431c9dbb39b7990e740a9ab"
+    },
+    "okx-defi": {
+      "source": "okx/onchainos-skills",
+      "sourceType": "github",
+      "skillPath": "skills/okx-defi/SKILL.md",
+      "computedHash": "8d74615c7dcc82dcd4588055cbccffb2ffdcafef9414d2754ba7ba593009822e"
+    },
+    "okx-dex-market": {
+      "source": "okx/onchainos-skills",
+      "sourceType": "github",
+      "skillPath": "skills/okx-dex-market/SKILL.md",
+      "computedHash": "c66c04c3e8f49d6c0bc50fef2262e8c63dbc19b11fdebfe5123bab8c84a2b663"
+    },
+    "okx-growth-competition": {
+      "source": "okx/onchainos-skills",
+      "sourceType": "github",
+      "skillPath": "skills/okx-growth-competition/SKILL.md",
+      "computedHash": "9d6283d70c24a8c572c57cab2cc9ce103435d649eac44f5ae3cb962b61cc6d33"
+    },
+    "okx-guide": {
+      "source": "okx/onchainos-skills",
+      "sourceType": "github",
+      "skillPath": "skills/okx-guide/SKILL.md",
+      "computedHash": "dca057c4406d7b7da6d01e68d08d8ef502c56fae7921e26f7fb4a26ed295eb86"
+    }
+  }
+}

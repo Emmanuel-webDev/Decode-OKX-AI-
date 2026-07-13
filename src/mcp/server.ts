@@ -50,11 +50,9 @@ server.setRequestHandler(CallToolRequestSchema, async (req) => {
   };
 });
 
-if (import.meta.url === `file://${process.argv[1]}`) {
-  const transport = new StdioServerTransport();
-  server.connect(transport).then(() => {
-    logger.info("✓ MCP server connected over stdio");
-  });
-}
+const transport = new StdioServerTransport();
+server.connect(transport).then(() => {
+  logger.info("✓ MCP server connected over stdio");
+});
 
 export { server };
