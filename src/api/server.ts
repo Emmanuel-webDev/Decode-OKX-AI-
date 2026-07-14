@@ -64,7 +64,7 @@ const openapi = {
       post: {
         summary: "🎬 Fire a demo CRITICAL alert to all Telegram subscribers",
         description:
-          "For judges + curious devs: fabricates a synthetic admin-to-EOA takeover event and broadcasts a formatted alert to every Telegram user who /watch'd the demo address. Rate-limited to 1 call per 60s per IP. See the alert land in your Telegram in ~1 second.",
+          "For judges + curious devs: fabricates a synthetic admin-to-EOA takeover event and broadcasts a formatted alert to every Telegram user who /watch'd the demo address(/Watch 0xdec0de0000000000000000000000000000000001).See the alert land in your Telegram in ~1 second.",
         responses: {
           "200": { description: "Alert broadcast successfully" },
           "429": { description: "Rate limited — wait then retry" },
