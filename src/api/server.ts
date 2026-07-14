@@ -18,7 +18,7 @@ const openapi = {
     title: "Decode Guardian ASP",
     version: "0.1.0",
     description:
-      "Autonomous X Layer security guardian. Reads recent protocol modifications (proxy upgrades, admin changes) and returns a structured risk verdict. Callable by humans, by other agents on OKX.AI, or over MCP, Try the Telegram companion bot: [@XLayerFraudGuard_bot](https://t.me/XLayerFraudGuard_bot)",
+      "Autonomous X Layer security guardian. Reads recent protocol modifications (proxy upgrades, admin changes) and returns a structured risk verdict. Callable by humans, by other agents on OKX.AI, or over MCP, Try the Telegram companion bot: [@XLayerFraudGuard_bot](tg://resolve?domain=XLayerFraudGuard_bot)",
     contact: {
       name: "Decode",
       url: "https://github.com/Emmanuel-webDev/Decode-OKX-AI-",
