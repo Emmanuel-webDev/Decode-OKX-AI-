@@ -63,7 +63,6 @@ export async function inspectProtocol(
       summary: string;
       risk_score: number;
       note: string;
-      demo_addresses: { critical: string; high: string };
     }
 > {
   const latest = await cache.latestByProxy(address);
@@ -75,9 +74,5 @@ export async function inspectProtocol(
     summary:
       "No recent security events observed for this address by the Decode monitor. This does NOT constitute an audit — treat as informational.",
     note: "Decode is a reactive monitor. UNKNOWN means no admin changes or proxy upgrades have been captured for this address in the current monitor window. To see a populated verdict, try one of the demo addresses below — they contain synthetic assessments illustrating what a real incident would look like.",
-    demo_addresses: {
-      critical: "0xdec0de0000000000000000000000000000000001",
-      high: "0xdec0de0000000000000000000000000000000002",
-    },
   };
 }
